@@ -1,0 +1,25 @@
+#Select data into the database
+res=c.fetchall()
+print(res)
+#print(height, timestamp, bits,nonce, hashrate,prev_block_hash,next_block_hash,size,difficulty,reward_block,confirmations,weight)
+#Doping EMPLOYEE table if already exists
+c.execute("DROP TABLE Height")
+print("Table dropped... ")
+
+
+
+#Commit your changes in the database
+#conn.commit()
+#print('complete')
+
+
+c.execute('''SELECT * FROM Blocks''')
+results=c.fetchall()
+#print(results)
+
+df=pd.read_sql_query('''SELECT * FROM Blocks''', conn)
+print(df)
+conn.close()
+
+#Commit your changes in the database
+conn.commit()
